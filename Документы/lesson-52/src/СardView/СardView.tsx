@@ -5,7 +5,7 @@ interface ICardProps {
     suit: string;
 }
 
-const Card: React.FC<ICardProps> = props => {
+const CardView: React.FC<ICardProps> = props => {
 
     const cardClasses = `card rank-${props.rank} ${props.suit}`;
     cardClasses.toLowerCase();
@@ -31,4 +31,4 @@ const Card: React.FC<ICardProps> = props => {
     );
 };
 
-export default Card;
+export default CardView;

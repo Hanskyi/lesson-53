@@ -1,12 +1,18 @@
 import React from 'react';
-import Card from "./Card/Card";
+import CardView from "./СardView/СardView";
+import CardDeck from "./lib/CardDeck";
 import './cards.css';
 import './App.css';
 
+
 function App() {
-  return (
+
+    const cardDeck = new CardDeck();
+     const randomCArd = cardDeck.getCards(5)
+    console.log(randomCArd);
+    return (
     <div className="App">
-      <Card rank="9" suit="diams"/>
+      <CardView rank="q" suit="diams"/>
     </div>
   );
 }
