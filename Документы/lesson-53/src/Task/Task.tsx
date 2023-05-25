@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface Itask {
+interface ITask {
     task: string;
     id?: string;
     removeTask?: React.MouseEventHandler;
 }
 
-const Task: React.FC<Itask> = props => {
+const Task: React.FC<ITask> = props => {
     return (
         <div className="todo-task" id={props.id}>
             <p className="todo-text">{props.task}</p>

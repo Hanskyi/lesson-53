@@ -1,15 +1,13 @@
 import React from 'react';
 
 interface IAddTaskFormProps{
-    // addNewTask?: React.ChangeEventHandler<HTMLInputElement>;
-    createElement?: React.MouseEventHandler<HTMLButtonElement>
+    createElement?: React.MouseEventHandler<HTMLButtonElement>;
     currentTask?:string;
     setCurrentTask?:React.ChangeEventHandler;
     createNewTask?:React.MouseEventHandler;
     inputRef?:React.RefObject<HTMLInputElement>;
 }
 const AddTaskForm: React.FC<IAddTaskFormProps> = (props) => {
-
 
     return (
         <div>
@@ -26,4 +24,3 @@ const AddTaskForm: React.FC<IAddTaskFormProps> = (props) => {
 };
 
 export default AddTaskForm;
-// onClick={}

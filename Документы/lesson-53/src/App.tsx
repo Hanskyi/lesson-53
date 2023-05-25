@@ -17,39 +17,44 @@ const App = () => {
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCurrentTask(event.target.value);
     };
-    const createNewTask = () => {
+    const createNewTask = (index: number) => {
         if (currentTask !== "") {
             const copyUserTask = [...userTask];
-            const taskCopy = {...copyUserTask[1]};
+            const taskCopy = {...copyUserTask[index]};
             taskCopy.task = currentTask;
             taskCopy.id = nanoid();
-            copyUserTask.unshift(taskCopy)
+            copyUserTask.unshift(taskCopy);
             setUserTask(copyUserTask);
-            setCurrentTask('')
+            setCurrentTask('');
             if (inputRef.current) {
                 inputRef.current.value = '';
             }
         }
-    }
+    };
 
-    const removeTask = (id:string) => {
+    const removeTask = (id: string) => {
         const taskCopy = [...userTask];
         const index = userTask.findIndex(task => task.id === id);
-        taskCopy.splice(index, 1)
-        setUserTask(taskCopy)
+        taskCopy.splice(index, 1);
+        setUserTask(taskCopy);
     }
     return (
         <div className="App">
             <div className="container">
                 <AddTaskForm
-                    createNewTask={createNewTask}
+                    createNewTask={() => createNewTask(0)}
                     setCurrentTask={handleTextChange}
                     inputRef={inputRef}
                 />
                 <div className="todo-container">
                     {userTask.map((user, index) => {
                         return (
-                            <Task task={user.task} id ={user.id} key={user.id} removeTask = {() => removeTask(user.id)}/>
+                            <Task
+                                task={user.task}
+                                id={user.id}
+                                key={user.id}
+                                removeTask={() => removeTask(user.id)}
+                            />
                         )
                     })}
                 </div>
