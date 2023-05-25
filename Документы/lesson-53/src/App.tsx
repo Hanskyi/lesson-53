@@ -7,8 +7,8 @@ import {nanoid} from "nanoid";
 const App = () => {
 
     const [userTask, setUserTask] = useState([
-        {task: 'hello world', id: '12345678'},
-        {task: 'today we do....', id: '876543'},
+        {task: 'hello world', id: '12345678', checkboxId: '1432143'},
+        {task: 'today we do....', id: '876543', checkboxId: '1354'},
     ]);
 
     const [currentTask, setCurrentTask] = useState('');
@@ -23,6 +23,7 @@ const App = () => {
             const taskCopy = {...copyUserTask[index]};
             taskCopy.task = currentTask;
             taskCopy.id = nanoid();
+            taskCopy.checkboxId = nanoid();
             copyUserTask.unshift(taskCopy);
             setUserTask(copyUserTask);
             setCurrentTask('');
@@ -38,6 +39,8 @@ const App = () => {
         taskCopy.splice(index, 1);
         setUserTask(taskCopy);
     }
+
+
     return (
         <div className="App">
             <div className="container">
@@ -52,6 +55,7 @@ const App = () => {
                             <Task
                                 task={user.task}
                                 id={user.id}
+                                checkboxId={user.checkboxId}
                                 key={user.id}
                                 removeTask={() => removeTask(user.id)}
                             />
@@ -61,6 +65,6 @@ const App = () => {
             </div>
         </div>
     );
-}
+};
 
 export default App;
